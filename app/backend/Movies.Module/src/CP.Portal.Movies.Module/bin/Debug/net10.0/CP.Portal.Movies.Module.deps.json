@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "CP.Portal.Movies.Module/1.0.0": {
+        "runtime": {
+          "CP.Portal.Movies.Module.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CP.Portal.Movies.Module/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

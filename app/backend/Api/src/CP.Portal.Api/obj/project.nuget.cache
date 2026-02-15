@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DK63QNWZPfQ=",
+  "success": true,
+  "projectFilePath": "/Users/fdymendo/Documents/Estudio/NET 10 Modular Monolith/CINEMAPARADISE/app/backend/Api/src/CP.Portal.Api/CP.Portal.Api.csproj",
+  "expectedPackageFiles": [
+    "/Users/fdymendo/.nuget/packages/microsoft.aspnetcore.openapi/10.0.3/microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "/Users/fdymendo/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
