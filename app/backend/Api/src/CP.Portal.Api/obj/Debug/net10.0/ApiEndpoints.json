@@ -1,0 +1,20 @@
+[
+  {
+    "ContainingType": "CP.Portal.Movies.Module.MovieEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapMoviesEndpoints\u003Eb__0_0",
+    "RelativePath": "movies",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CP.Portal.Movies.Module.Movie.Response.MovieResponse, CP.Portal.Movies.Module, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

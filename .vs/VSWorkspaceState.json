@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github\\workflows",
+    "\\app",
+    "\\app\\backend",
+    "\\app\\backend\\Api\\src",
+    "\\app\\backend\\Api\\src\\CP.Portal.Api",
+    "\\app\\backend\\Movies.Module",
+    "\\app\\backend\\Movies.Module\\src",
+    "\\app\\backend\\Movies.Module\\src\\CP.Portal.Movies.Module"
+  ],
+  "SelectedNode": "\\app\\backend\\Movies.Module\\src\\CP.Portal.Movies.Module\\Class1.cs",
+  "PreviewInSolutionExplorer": false
+}
