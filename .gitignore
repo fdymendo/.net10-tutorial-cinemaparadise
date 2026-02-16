@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/app/backend/.vs
+/app/backend/Api/src/CP.Portal.Api/obj
+/app/backend/Movies.Module/src/CP.Portal.Movies.Module/obj/Debug/net10.0
