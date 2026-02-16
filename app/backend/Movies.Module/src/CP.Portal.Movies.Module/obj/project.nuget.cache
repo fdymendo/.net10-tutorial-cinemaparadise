@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jPNVG7b0nfw=",
+  "dgSpecHash": "Dca+LVvBFJk=",
   "success": true,
-  "projectFilePath": "F:\\source\\fdymendo\\.net10-tutorial-cinemaparadise\\app\\backend\\Movies.Module\\src\\CP.Portal.Movies.Module\\CP.Portal.Movies.Module.csproj",
+  "projectFilePath": "/Users/fdymendo/Documents/Estudio/NET 10 Modular Monolith/CINEMAPARADISE/app/backend/Movies.Module/src/CP.Portal.Movies.Module/CP.Portal.Movies.Module.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
