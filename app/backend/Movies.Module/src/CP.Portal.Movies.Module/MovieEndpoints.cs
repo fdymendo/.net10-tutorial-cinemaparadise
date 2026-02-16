@@ -10,7 +10,7 @@ namespace CP.Portal.Movies.Module
         {
             app.MapGet("/movies", (IMovieService movieService) =>
             {
-                var movies = movieService.GetMovie();
+                var movies = movieService.GetMovies();
                 return movies;
             });
         }

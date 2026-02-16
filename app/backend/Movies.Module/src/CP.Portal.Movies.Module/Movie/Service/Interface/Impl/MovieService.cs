@@ -5,7 +5,7 @@ namespace CP.Portal.Movies.Module.Movie.Service.Interface.Impl
 {
     internal class MovieService : IMovieService
     {
-        List<MovieResponse> IMovieService.GetMovie()
+        List<MovieResponse> IMovieService.GetMovies()
         {
             return new List<MovieResponse>
             {

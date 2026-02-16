@@ -4,4 +4,6 @@
 
 /app/backend/.vs
 /app/backend/Api/src/CP.Portal.Api/obj
-/app/backend/Movies.Module/src/CP.Portal.Movies.Module/obj/Debug/net10.0
+/app/backend/Api/src/CP.Portal.Api/bin
+/app/backend/Movies.Module/src/CP.Portal.Movies.Module/obj
+/app/backend/Movies.Module/src/CP.Portal.Movies.Module/bin
