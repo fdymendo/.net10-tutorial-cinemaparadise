@@ -1,4 +1,4 @@
-﻿namespace CP.Portal.Movies.Module.Data
+﻿namespace CP.Portal.Movies.Module.Data.Domain
 {
     internal class Person
     {
@@ -9,5 +9,7 @@
 
         public ICollection<MovieCast> Casts { get; } = [];
         public ICollection<MovieCrew> Crewes { get; } = [];
+
     }
+
 }

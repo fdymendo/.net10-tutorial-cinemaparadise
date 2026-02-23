@@ -1,5 +1,4 @@
-﻿
-namespace CP.Portal.Movies.Module.Data
+﻿namespace CP.Portal.Movies.Module.Data.Domain
 {
     internal class Genre
     {

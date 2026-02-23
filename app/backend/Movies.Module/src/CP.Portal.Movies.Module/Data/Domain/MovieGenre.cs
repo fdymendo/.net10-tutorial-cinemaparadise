@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CP.Portal.Movies.Module.Data
+namespace CP.Portal.Movies.Module.Data.Domain
 {
     internal class MovieGenre
     {

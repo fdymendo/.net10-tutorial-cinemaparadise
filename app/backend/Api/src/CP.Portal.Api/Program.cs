@@ -1,9 +1,10 @@
+using CP.Portal.Movies.Module;
 using CP.Portal.Movies.Module.Services;
 using FastEndpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMovieService();
+builder.Services.AddMovieServices(builder.Configuration);
 builder.Services.AddOpenApi();
 builder.Services.AddFastEndpoints();
 

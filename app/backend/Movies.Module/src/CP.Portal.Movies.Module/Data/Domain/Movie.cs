@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace CP.Portal.Movies.Module.Data
+namespace CP.Portal.Movies.Module.Data.Domain
 {
     internal class Movie
     {
@@ -24,12 +24,12 @@ namespace CP.Portal.Movies.Module.Data
         public ICollection<MovieGenre> MovieGenres { get; } = [];
 
 
-        //Projections
         //projections
         [NotMapped]
         public IEnumerable<Genre> Genres => MovieGenres
                                             .Select(g => g.Genre!)
                                             .Where(g => g is not null);
+
 
 
         [NotMapped]

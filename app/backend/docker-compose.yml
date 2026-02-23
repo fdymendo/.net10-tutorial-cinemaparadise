@@ -1,0 +1,21 @@
+services:
+  monolithic-db:
+    container_name: monolithic_db
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: P0stgres123!
+      POSTGRES_DB: monolithic_db
+      POSTGRES_USER: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/17/docker
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
