@@ -1,4 +1,6 @@
 ﻿using CP.Portal.Movies.Module.Data;
+using CP.Portal.Movies.Module.Data.Repositories;
+using CP.Portal.Movies.Module.Data.Seedings;
 using CP.Portal.Movies.Module.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,16 +10,34 @@ namespace CP.Portal.Movies.Module
 {
     public static class MovieServiceExtensions
     {
-        public static IServiceCollection AddMovieServices(this IServiceCollection services,
-              ConfigurationManager config)
+        public static IServiceCollection AddMovieServices(
+          this IServiceCollection services,
+          ConfigurationManager config
+      )
         {
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieRepository, EfMovieRepository>();
+
             string? connectionString = config.GetConnectionString("MoviesConnectionString");
+
             services.AddDbContext<MovieDbContext>(opt =>
             {
-                opt.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
+                opt.UseNpgsql(connectionString)
+                .UseSnakeCaseNamingConvention()
+                .UseAsyncSeeding(async (db, isFirst, ct) =>
+                {
+                    var dbContext = (MovieDbContext)db;
+
+                    var movies = await MoviesAsyncSeeder.SeedAsync(dbContext, ct);
+
+                    await MovieGenresAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                    await MovieCastsAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                    await MovieCrewsAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                });
 
             });
+
+
             return services;
         }
     }

@@ -8,5 +8,14 @@
         public int CastOrder { get; private set; }
         public Movie? Movie { get; private set; }
         public Person? Person { get; private set; }
+
+        internal MovieCast(Guid movieId, Guid personId, string characterName, int castOrder)
+        {
+            MovieId = movieId;
+            PersonId = personId;
+            CharacterName = characterName;
+            CastOrder = castOrder;
+        }
+
     }
 }

@@ -11,5 +11,10 @@ namespace CP.Portal.Movies.Module.Data.Domain
 
         public Movie? Movie { get; private set; }
         public Genre? Genre { get; private set; }
+        internal MovieGenre(Guid movieId, Guid genreId)
+        {
+            MovieId = movieId;
+            GenreId = genreId;
+        }
     }
 }
