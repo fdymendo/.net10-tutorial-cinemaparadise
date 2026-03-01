@@ -14,4 +14,6 @@
     <File Path="docker-compose.yml" />
     <File Path="Solution items/.editorconfig" />
   </Folder>
+  <Folder Name="/Users.Module/" />
+  <Folder Name="/Users.Module/src/" />
 </Solution>

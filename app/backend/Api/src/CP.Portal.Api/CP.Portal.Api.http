@@ -1,6 +1,48 @@
 @CP.Portal.Api_HostAddress = http://localhost:5000
 
-###
 
 GET {{CP.Portal.Api_HostAddress}}/api/movies
 Accept: application/json
+
+###
+
+#Create Movie
+POST {{CP.Portal.Api_HostAddress}}/api/movies
+Content-Type: application/json
+Accept: Application/json
+
+{
+"title": "Avatar el misterio del aire",
+"releaseYear": "2025-01-01",
+"durationMinutes": 120,
+"language": "en",
+"price": 9.99,
+"originalTitle": "Avatar X Air",
+"description": "test"
+}
+
+###
+
+#Update movie rent price
+
+PUT {{CP.Portal.Api_HostAddress}}/api/movies/019c8db9-e0d5-764b-bf3b-3388ac222390/price
+Content-Type: application/json
+Accept: Application/json
+{
+  "newPrice":"1001"
+}
+
+###
+
+#Delete Movie
+DELETE {{CP.Portal.Api_HostAddress}}/api/movies/019caa38-3891-7de5-bbfe-24ea5785f703
+Accept: application/json
+
+###
+
+#Get Movie Details
+GET {{CP.Portal.Api_HostAddress}}/api/movies/019c8db9-e0d5-7221-b634-2d96f7461074
+Accept: application/json
+Content-Type: application/json
+
+###

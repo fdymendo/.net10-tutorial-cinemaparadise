@@ -1,44 +1,64 @@
-﻿using CP.Portal.Movies.Module.Data;
+using CP.Portal.Movies.Module.Core;
+using CP.Portal.Movies.Module.Data;
 using CP.Portal.Movies.Module.Data.Repositories;
 using CP.Portal.Movies.Module.Data.Seedings;
 using CP.Portal.Movies.Module.Services;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CP.Portal.Movies.Module
+namespace CP.Portal.Movies.Module;
+
+public static class MovieServiceExtensions
 {
-    public static class MovieServiceExtensions
+    public static IServiceCollection AddMovieServices(
+        this IServiceCollection services,
+        ConfigurationManager config
+    )
     {
-        public static IServiceCollection AddMovieServices(
-          this IServiceCollection services,
-          ConfigurationManager config
-      )
+        services.AddScoped<IMovieService, MovieService>();
+        services.AddScoped<IMovieRepository, EfMovieRepository>();
+
+        string? connectionString = config.GetConnectionString("MoviesConnectionString");
+
+        services.AddDbContext<MovieDbContext>(opt =>
         {
-            services.AddScoped<IMovieService, MovieService>();
-            services.AddScoped<IMovieRepository, EfMovieRepository>();
-
-            string? connectionString = config.GetConnectionString("MoviesConnectionString");
-
-            services.AddDbContext<MovieDbContext>(opt =>
+            opt.UseNpgsql(connectionString)
+            .UseSnakeCaseNamingConvention()
+            .UseAsyncSeeding( async (db, isFirst, ct ) =>
             {
-                opt.UseNpgsql(connectionString)
-                .UseSnakeCaseNamingConvention()
-                .UseAsyncSeeding(async (db, isFirst, ct) =>
-                {
-                    var dbContext = (MovieDbContext)db;
+                var dbContext = (MovieDbContext)db;
 
-                    var movies = await MoviesAsyncSeeder.SeedAsync(dbContext, ct);
+                var movies = await MoviesAsyncSeeder.SeedAsync(dbContext, ct);
 
-                    await MovieGenresAsyncSeeder.SeedAsync(dbContext, movies, ct);
-                    await MovieCastsAsyncSeeder.SeedAsync(dbContext, movies, ct);
-                    await MovieCrewsAsyncSeeder.SeedAsync(dbContext, movies, ct);
-                });
-
+                await MovieGenresAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                await MovieCastsAsyncSeeder.SeedAsync(dbContext, movies, ct);
+                await MovieCrewsAsyncSeeder.SeedAsync(dbContext, movies, ct);
             });
 
+        });
 
-            return services;
+        var assembly = typeof(MovieServiceExtensions).Assembly;
+
+        var validatorTypes = assembly.GetTypes().Where(
+            t => t.IsClass && !t.IsAbstract
+            && t.GetInterfaces()
+            .Any(
+                i => i.IsGenericType 
+                && i.GetGenericTypeDefinition() == typeof(IValidator<>))
+        ).ToList();
+
+        foreach (var validatorType in validatorTypes)
+        {
+            var validatorInterface = validatorType.GetInterfaces()
+                            .First(i => i.IsGenericType 
+                            && i.GetGenericTypeDefinition() == typeof(IValidator<>));
+
+            services.AddScoped(validatorInterface, validatorType);
+        
         }
+
+        return services;
     }
 }

@@ -82,5 +82,24 @@ namespace CP.Portal.Movies.Module.Data.Domain
             RentalPrice = rentalPrice;
         }
 
-    }
-}
+    
+
+    public void UpdatePrice(decimal newPrice)
+        {
+            if (newPrice < 0m)
+                throw new ArgumentOutOfRangeException(
+                    nameof(newPrice),
+                    "Rental Price can not be negative"
+                );
+            RentalPrice = newPrice;
+
+            if (newPrice == RentalPrice)
+            {
+                return;
+            }
+
+            RentalPrice = newPrice;
+
+        }
+     }
+ }
